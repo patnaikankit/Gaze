@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 )
 
 // ANSI colors
@@ -41,11 +40,7 @@ func logWithColor(level Level, color string, tag string, format string, v ...int
 	}
 	msg := fmt.Sprintf(format, v...)
 
-	prefix := ""
-	if showTimestamp {
-		prefix = time.Now().Format("15:04:05") + " "
-	}
-	log.Printf("%s%s[%s]%s %s", prefix, color, tag, reset, msg)
+	log.Printf("%s[%s]%s %s", color, tag, reset, msg)
 }
 
 func Debug(format string, v ...interface{}) {
