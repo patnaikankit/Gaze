@@ -42,7 +42,7 @@ func defaultConfig() *Config {
 }
 
 // checks for JSON/YAML config and merges into base config
-func loadConfigFile(base *Config, path string) (*Config, error) {
+func LoadConfigFile(base *Config, path string) (*Config, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("could not read config file: %w", err)
@@ -79,7 +79,7 @@ func ParseConfig() (*Config, error) {
 
 	// Merge from file if provided
 	if *configFile != "" {
-		loadedCfg, err := loadConfigFile(cfg, *configFile)
+		loadedCfg, err := LoadConfigFile(cfg, *configFile)
 		if err != nil {
 			logger.Error("Failed to load config file: %v", err)
 			return nil, err

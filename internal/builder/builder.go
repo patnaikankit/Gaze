@@ -22,7 +22,7 @@ type BuildResult struct {
 	BuildErr error
 }
 
-func (b *Builder) New(cfg *config.Config) *Builder {
+func New(cfg *config.Config) *Builder {
 	return &Builder{cfg: cfg}
 }
 
